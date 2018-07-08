@@ -7,7 +7,6 @@ export class DatePickFilter extends React.Component {
     state = {
         focused: null
     }
-    // date or {date}?
     onDateChange = (date) => {
         this.props.setDate(date);
     }
