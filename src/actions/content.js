@@ -13,3 +13,4 @@ export const removeContent = ({ id }) => ({
     type: 'REMOVE_CONTENT',
     id
 });
+

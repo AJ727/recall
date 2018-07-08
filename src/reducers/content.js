@@ -17,8 +17,9 @@ export default (state = contentReducerDefaultState, action) => {
             });
         case 'REMOVE_CONTENT':
             return state.filter(({ id }) => 
-            id !== action.id
-        );
+                id !== action.id
+            );
+        
         default:
             return state; 
     }
