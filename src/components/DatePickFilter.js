@@ -3,12 +3,13 @@ import { SingleDatePicker } from 'react-dates';
 
 export default class DatePickFilter extends React.Component {
     state = {
-        date: null,
-        focused: null
+        date: undefined,
+        focused: undefined
     }
     render(){
         return (
             <div>
+                {console.log(this.state.date)}
                 <SingleDatePicker 
                     date={this.state.date}
                     onDateChange={date => this.setState({ date })}
