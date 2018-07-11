@@ -1,10 +1,12 @@
 import React from 'react';
-import DateContentEntryForm from 'DateContentEntryForm';
+import DateContentEntryForm from './DateContentEntryForm';
 
-export class AddContentPage extends React.Component {
+export default class AddContentPage extends React.Component {
     render(){
-        <div>
-            <DateContentEntryForm />
-        </div>
+        return (
+            <div>
+                <DateContentEntryForm />
+            </div>
+        )
     }
 }

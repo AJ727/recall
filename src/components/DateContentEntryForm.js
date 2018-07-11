@@ -12,7 +12,13 @@ export default class DateContentEntryForm extends React.Component {
             error: ''
         }
     }
-
+    onDateChange = (date) => {
+        this.setState({date})
+    }
+    onContentChange = (e) => {
+        const textAreaContent = e.target.value;
+        this.setState(() => ({textAreaContent}))
+    }
     render() {
         return (
             <form>
