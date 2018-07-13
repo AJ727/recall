@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import selectContent from '../selectors/content';
 
 // Specification for this component:
 // Main Objective - Upon receiving a date from DatePickFilter, render corresponding journal entry
@@ -13,10 +14,20 @@ export const DateContent = (props) => (
                     <span>No entry for today</span>
                 </div>
             ) : (
-                props.content
+                <div>
+                    {/*props.content.map((entry) => {
+                        return entry 
+                    })*/}
+                </div>
             )
         }
     </div>
 )
 
-export default connect()(DateContent);
+const mapStateToProps = (state) => {
+    return {
+        content: selectContent(state.content, state.filters)
+    }
+};
+
+export default connect(mapStateToProps)(DateContent);
