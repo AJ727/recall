@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import DateContentEntryForm from './DateContentEntryForm';
 import { addContent } from '../actions/content';
 
-export default class AddContentPage extends React.Component {
+export class AddContentPage extends React.Component {
     onSubmit = (content) => {
-        this.props.addContent(content);
+        this.props.dispatch(addContent(content));
         this.props.history.push('/');
     }
     render(){
@@ -14,8 +14,18 @@ export default class AddContentPage extends React.Component {
                 <div>
                     <h1>Add Journal Entry</h1>
                 </div>
-                <DateContentEntryForm />
+                <DateContentEntryForm 
+                    onSubmit={this.onSubmit}
+                />
             </div>
         )
     }
 }
+
+// const mapDispatchToProps = (dispatch) => ({
+//     startAddExpense : (expense) => dispatch(startAddExpense(expense))
+// });
+
+// undefined, mapDispatchToProps
+
+export default connect()(AddContentPage);
