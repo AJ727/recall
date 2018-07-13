@@ -16,18 +16,33 @@ export default class DateContentEntryForm extends React.Component {
         this.setState({date})
     }
     onContentChange = (e) => {
-        const textAreaContent = e.target.value;
-        this.setState(() => ({textAreaContent}))
+        const content = e.target.value;
+        this.setState(() => ({content}))
     }
+    onSubmit = (e) => {
+        e.preventDefault();
+        if(!this.state.content) {
+            this.setState(() => ({ error: 'Provide a valid journal entry!' }));
+        }
+        else {
+            this.setState(() => ({ error: '' }));
+            this.props.onSubmit({
+                content: this.state.content,
+                date: this.state.date.valueOf()
+            });
+        }
+    };
     render() {
         return (
-            <form>
+            <form onSubmit={this.onSubmit}>
+            {this.state.error && <p>{this.state.error}</p>}
                 <SingleDatePicker 
                     date={this.state.date}
                     onDateChange={this.onDateChange}
                     focused={this.state.focused}
                     onFocusChange={({focused}) => this.setState({ focused })}
                     numberOfMonths={1}
+                    isOutsideRange={() => false}
                     id="FormDate"
                 />
                 <textarea
@@ -35,6 +50,9 @@ export default class DateContentEntryForm extends React.Component {
                     onChange={this.onContentChange}
                     placeholder="Add today's journal entry!"
                 />
+                <div>
+                    <button>Save Journal Entry</button>
+                </div>
             </form>
         )
     }

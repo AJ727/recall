@@ -4,9 +4,10 @@ import createHistory from 'history/createBrowserHistory';
 import DashboardPage from '../components/DashboardPage';
 import LoginPage from '../components/LoginPage';
 import NotFoundPage from '../components/NotFoundPage';
+import AddContentPage from '../components/AddContentPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import AddContentPage from '../components/AddContentPage';
+
 
 // Stateless functional React Component
 // path = where we want to show something
@@ -23,7 +24,7 @@ const AppRouter = () => (
         <Switch>
             <PublicRoute path="/" component={LoginPage} exact={true} />
             <PrivateRoute path="/dashboard" component={DashboardPage} />
-            <PublicRoute path="/add" component={AddContentPage} />
+            <Route path="/add" component={AddContentPage} />
             <Route component={NotFoundPage} />
         </Switch>
         </div>

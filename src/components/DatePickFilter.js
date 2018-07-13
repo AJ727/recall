@@ -20,6 +20,7 @@ export class DatePickFilter extends React.Component {
                     focused={this.state.focused}
                     onFocusChange={({focused}) => this.setState({ focused })}
                     numberOfMonths={1}
+                    isOutsideRange={() => false}
                     id="Pick A Date!"
                 />
             </div>
