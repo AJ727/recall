@@ -15,9 +15,7 @@ export const DateContent = (props) => (
                 </div>
             ) : (
                 <div>
-                    {/*props.content.map((entry) => {
-                        return entry 
-                    })*/}
+                    {props.date}
                 </div>
             )
         }
