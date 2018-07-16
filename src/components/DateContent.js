@@ -6,22 +6,21 @@ import selectContent from '../selectors/content';
 // Main Objective - Upon receiving a date from DatePickFilter, render corresponding journal entry
 // Ex. 4/23/2017 --> serve up the entry from that day
 
-export const DateContent = (props) => (
+// Destructure content off of props
+export const DateContent = ({content}) => (
     <div>
         {
-            //props.content.date
-            
-            props.content.length === 0 ? (
+            content.length === 0 ? (
                 <div>
                     <span>No entry for today</span>
                 </div>
             ) : (
                 <div>
-                    {props.content[0].content}
+                    {/* using content[0].content is ugly, how do I make this better? */}
+                    {content[0].content}
                 </div>
             )
         }
-        
     </div>
 )
 
