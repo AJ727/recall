@@ -13,7 +13,6 @@ export class DatePickFilter extends React.Component {
     render(){
         return (
             <div>
-                {console.log(this.props.filters.date)}
                 <SingleDatePicker 
                     date={this.props.filters.date}
                     onDateChange={this.onDateChange}
