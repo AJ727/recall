@@ -8,10 +8,10 @@ import { editContent, removeContent } from '../actions/content';
 // Using mapDispatchToProps allows the use of "this.props.editContent(stuff)" instead
 export class EditContentPage extends React.Component {
     onSubmit = (content) => {
-        this.props.dispatch(editContent(this.props.content.id, content));
+        this.props.editContent(this.props.content.id, content);
     }
     removeEntry = () => {
-        this.props.dispatch(removeContent({ id: this.props.content.id }));
+        this.props.removeContent({ id: this.props.content.id });
     }
     render() {
         return (
@@ -27,10 +27,13 @@ export class EditContentPage extends React.Component {
     }
 }
 
-// I think I'll need mapDispatchToProps later when I use firebase
+const mapStateToProps = (state, props) => ({
+    content: state.content.find((entry) => entry.id === props.match.params.id)
+});
+
 const mapDispatchToProps = (dispatch) => ({
     editContent: (id, content) => dispatch(editContent(id, content)), 
     removeContent: ({ id }) => dispatch(removeContent({ id }))
 });
 
-export default connect (undefined, mapDispatchToProps)(EditContentPage);
+export default connect (mapStateToProps, mapDispatchToProps)(EditContentPage);
