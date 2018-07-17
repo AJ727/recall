@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DateEntryForm from './DateEntryForm';
-import { addEntry } from '../actions/content';
+import { addEntry } from '../actions/entries';
 
 export class AddEntryPage extends React.Component {
     onSubmit = (entry) => {

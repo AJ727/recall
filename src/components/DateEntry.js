@@ -16,7 +16,7 @@ export const DateEntry = ({entries}) => (
                 </div>
             ) : (
                 <div>
-                    {/* using content[0].content is ugly, how do I make this better? */}
+                    {/* using entry[0].entry is ugly, how do I make this better? */}
                     {entries[0].entry}
                 </div>
             )
@@ -26,10 +26,10 @@ export const DateEntry = ({entries}) => (
 
 const mapStateToProps = (state) => {
     return {
-        // content becomes whatever the result of selectContent() is
-        // state.content and state.filters are the 2 params in the selectors/content function
+        // entry becomes whatever the result of selectentry() is
+        // state.entry and state.filters are the 2 params in the selectors/entry function
         // with state.filters being destructured for only the { date }
-        content: selectEntries(state.entries, state.filters)
+        entries: selectEntries(state.entries, state.filters)
     }
 };
 
