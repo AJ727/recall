@@ -1,16 +1,16 @@
-export const addContent = (content) => ({
-    type: 'ADD_CONTENT',
-    content
+export const addEntry = (entry) => ({
+    type: 'ADD_ENTRY',
+    entry
 });
 
-export const editContent = (id, updates) => ({
-    type: 'EDIT_CONTENT',
+export const editEntry = (id, updates) => ({
+    type: 'EDIT_ENTRY',
     id, 
     updates
 });
 
-export const removeContent = ({ id }) => ({
-    type: 'REMOVE_CONTENT',
+export const removeEntry = ({ id }) => ({
+    type: 'REMOVE_ENTRY',
     id
 });
 
