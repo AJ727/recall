@@ -1,24 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DateContentEntryForm from './DateContentEntryForm';
-import { editContent, removeContent } from '../actions/content';
+import DateEntryForm from './DateEntryForm';
+import { editEntry, removeEntry } from '../actions/entries';
 
 // REMINDER ABOUT mapDispatchToProps:
 // Right now "this.props.dispatch(editContent(stuff))" is being used
 // Using mapDispatchToProps allows the use of "this.props.editContent(stuff)" instead
-export class EditContentPage extends React.Component {
-    onSubmit = (content) => {
-        this.props.editContent(this.props.content.id, content);
+export class EditEntryPage extends React.Component {
+    onSubmit = (entry) => {
+        this.props.editEntry(this.props.content.id, entry);
     }
     removeEntry = () => {
-        this.props.removeContent({ id: this.props.content.id });
+        this.props.removeEntry({ id: this.props.entry.id });
     }
     render() {
         return (
             <div>
                 <h1>Edit Journal Entry</h1>
-                <DateContentEntryForm 
-                    content={this.props.content}
+                <DateContentForm 
+                    entry={this.props.entry}
                     onSubmit={this.onSubmit}
                 />
                 <button onClick={this.removeEntry}>Remove Entry</button>
@@ -28,12 +28,12 @@ export class EditContentPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    content: state.content.find((entry) => entry.id === props.match.params.id)
+    entry: state.entries.find((entry) => entry.id === props.match.params.id)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    editContent: (id, content) => dispatch(editContent(id, content)), 
-    removeContent: ({ id }) => dispatch(removeContent({ id }))
+    editEntry: (id, content) => dispatch(editEntry(id, entry)), 
+    removeEntry: ({ id }) => dispatch(removeEntry({ id }))
 });
 
-export default connect (mapStateToProps, mapDispatchToProps)(EditContentPage);
+export default connect (mapStateToProps, mapDispatchToProps)(EditEntryPage);
