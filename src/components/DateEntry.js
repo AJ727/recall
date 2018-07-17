@@ -7,7 +7,7 @@ import selectEntries from '../selectors/entries';
 // Ex. 4/23/2017 --> serve up the entry from that day
 
 // Destructure content off of props
-export const DateContent = ({entries}) => (
+export const DateEntry = ({entries}) => (
     <div>
         {
             entries.length === 0 ? (

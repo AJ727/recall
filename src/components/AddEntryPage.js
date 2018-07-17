@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import DateEntryForm from './DateEntryForm';
 import { addEntry } from '../actions/content';
 
-export class AddContentPage extends React.Component {
+export class AddEntryPage extends React.Component {
     onSubmit = (entry) => {
         this.props.addEntry(entry);
         this.props.history.push('/');

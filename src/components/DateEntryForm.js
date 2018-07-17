@@ -2,12 +2,12 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
-export default class DateContentEntryForm extends React.Component {
+export default class DateEntryForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: props.content ? moment(props.content.date) : moment(),
-            content: props.content ? props.content.content : '',
+            date: props.entry ? moment(props.entry.date) : moment(),
+            entries: props.entry ? props.entries.entry : '',
             focused: false,
             error: ''
         }
@@ -15,19 +15,19 @@ export default class DateContentEntryForm extends React.Component {
     onDateChange = (date) => {
         this.setState({date})
     }
-    onContentChange = (e) => {
-        const content = e.target.value;
-        this.setState(() => ({content}))
+    onEntryChange = (e) => {
+        const entry = e.target.value;
+        this.setState(() => ({entry}))
     }
     onSubmit = (e) => {
         e.preventDefault();
-        if(!this.state.content) {
+        if(!this.state.entry) {
             this.setState(() => ({ error: 'Provide a valid journal entry!' }));
         }
         else {
             this.setState(() => ({ error: '' }));
             this.props.onSubmit({
-                content: this.state.content,
+                entry: this.state.entry,
                 date: this.state.date.valueOf()
             });
         }
@@ -46,8 +46,8 @@ export default class DateContentEntryForm extends React.Component {
                     id="FormDate"
                 />
                 <textarea
-                    value={this.state.content}
-                    onChange={this.onContentChange}
+                    value={this.state.entry}
+                    onChange={this.onEntryChange}
                     placeholder="Add today's journal entry!"
                 />
                 <div>
