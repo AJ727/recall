@@ -1,5 +1,7 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import selectEntries from '../selectors/entries';
 
 // Specification for this component:
@@ -7,18 +9,22 @@ import selectEntries from '../selectors/entries';
 // Ex. 4/23/2017 --> serve up the entry from that day
 
 // Destructure content off of props
-export const DateEntry = ({entries}) => (
+export const DateEntry = (props) => (
     <div>
-        {
-            entries.length === 0 ? (
+        
+        { 
+            props.entries.length === 0 ? (
                 <div>
                     <span>No entry for today</span>
                 </div>
             ) : (
-                <div>
-                    {/* using entry[0].entry is ugly, how do I make this better? */}
-                    {entries[0].entry}
-                </div>
+                <Link to={`/edit/${moment(props.entries[0].date).format('MMMDYY')}`}> 
+                    <div>
+                        {/* using entry[0].entry is ugly, how do I make this better? */}
+                        {console.log(props)}
+                        {props.entries[0].entry}
+                    </div>
+                </Link>
             )
         }
     </div>
