@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch) => ({
     addEntry : (entry) => dispatch(addEntry(entry))
 });
 
-export default connect(undefined, mapDispatchToProps)(AddContentPage);
+export default connect(undefined, mapDispatchToProps)(AddEntryPage);
