@@ -1,21 +1,21 @@
-const contentReducerDefaultState = [];
-export default (state = contentReducerDefaultState, action) => {
+const entryReducerDefaultState = [];
+export default (state = entryReducerDefaultState, action) => {
     switch(action.type) {
-        case 'ADD_CONTENT':
+        case 'ADD_ENTRY':
             return [
                 ...state,
-                action.content
+                action.entry
             ];
-        case 'EDIT_CONTENT':
-            return state.map((content) => {
-                if(content.id === action.id) {
+        case 'EDIT_ENTRY':
+            return state.map((entry) => {
+                if(entry.id === action.id) {
                     return {
-                        ...content,
+                        ...entry,
                         ...action.updates
                     }
                 }
             });
-        case 'REMOVE_CONTENT':
+        case 'REMOVE_ENTRY':
             return state.filter(({ id }) => 
                 id !== action.id
             );
