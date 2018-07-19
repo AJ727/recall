@@ -11,7 +11,6 @@ import selectEntries from '../selectors/entries';
 // Destructure content off of props
 export const DateEntry = (props) => (
     <div>
-        
         { 
             props.entries.length === 0 ? (
                 <div>
@@ -32,7 +31,6 @@ export const DateEntry = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        // entry becomes whatever the result of selectentry() is
         // state.entry and state.filters are the 2 params in the selectors/entry function
         // with state.filters being destructured for only the { date }
         entries: selectEntries(state.entries, state.filters)
