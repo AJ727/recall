@@ -4,13 +4,13 @@ export default (state = entryReducerDefaultState, action) => {
         case 'ADD_ENTRY':
             return [
                 ...state,
-                action.entry
+                action.entryObj
             ];
         case 'EDIT_ENTRY':
-            return state.map((entry) => {
-                if(entry.id === action.id) {
+            return state.map((entryObj) => {
+                if(entryObj.id === action.id) {
                     return {
-                        ...entry,
+                        ...entryObj,
                         ...action.updates
                     }
                 }
