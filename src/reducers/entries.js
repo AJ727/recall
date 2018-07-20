@@ -14,6 +14,9 @@ export default (state = entryReducerDefaultState, action) => {
                         ...action.updates
                     }
                 }
+                else {
+                    return entryObj;
+                }
             });
         case 'REMOVE_ENTRY':
             return state.filter(({ id }) => 

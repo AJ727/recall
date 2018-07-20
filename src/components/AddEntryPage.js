@@ -4,8 +4,8 @@ import DateEntryForm from './DateEntryForm';
 import { addEntry } from '../actions/entries';
 
 export class AddEntryPage extends React.Component {
-    onSubmit = (entry) => {
-        this.props.addEntry(entry);
+    onSubmit = (entryObj) => {
+        this.props.addEntry(entryObj);
         this.props.history.push('/');
     }
     render(){
@@ -23,7 +23,7 @@ export class AddEntryPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addEntry : (entry) => dispatch(addEntry(entry))
+    addEntry : (entryObj) => dispatch(addEntry(entryObj))
 });
 
 export default connect(undefined, mapDispatchToProps)(AddEntryPage);
