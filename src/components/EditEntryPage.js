@@ -7,11 +7,11 @@ import { editEntry, removeEntry } from '../actions/entries';
 // Right now "this.props.dispatch(editContent(stuff))" is being used
 // Using mapDispatchToProps allows the use of "this.props.editContent(stuff)" instead
 export class EditEntryPage extends React.Component {
-    onSubmit = (entry) => {
-        this.props.editEntry(this.props.entry.id, entry);
+    onSubmit = (entryObj) => {
+        this.props.editEntry(this.props.entryObj.id, entryObj);
     }
     removeEntry = () => {
-        this.props.removeEntry({ id: this.props.entry.id });
+        this.props.removeEntry({ id: this.props.entryObj.id });
     }
     render() {
         return (
@@ -28,11 +28,11 @@ export class EditEntryPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    entry: state.entries.find((entry) => entry.id === props.match.params.id)
+    entryObj: state.entries.find((entryObj) => entryObj.id === props.match.params.id)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    editEntry: (id, entry) => dispatch(editEntry(id, entry)), 
+    editEntry: (id, entryObj) => dispatch(editEntry(id, entryObj)), 
     removeEntry: ({ id }) => dispatch(removeEntry({ id }))
 });
 

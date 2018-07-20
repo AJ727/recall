@@ -7,16 +7,12 @@ import { SingleDatePicker } from 'react-dates';
 export default class DateEntryForm extends React.Component {
     constructor(props) {
         super(props);
-        console.log('1111')
-        console.log(props)
         this.state = {
-            date: props.date ? moment(props.date) : moment(),
-            entries: props.entry ? props.entries.entry : '',
+            date: props.entryObj ? moment(props.entryObj.date) : moment(),
+            entry: props.entryObj ? props.entryObj.entry : '',
             focused: false,
             error: ''
         }
-        console.log('222')
-        console.log(this.state)
     }
     onDateChange = (date) => {
         this.setState({date})
