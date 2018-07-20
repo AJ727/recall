@@ -2,15 +2,21 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
+
+// I need to fix the data here, it looks like entry{entry: 'aeoif', date:'2342'} or something which isn't right
 export default class DateEntryForm extends React.Component {
     constructor(props) {
         super(props);
+        console.log('1111')
+        console.log(props)
         this.state = {
-            date: props.entry ? moment(props.entry.date) : moment(),
+            date: props.date ? moment(props.date) : moment(),
             entries: props.entry ? props.entries.entry : '',
             focused: false,
             error: ''
         }
+        console.log('222')
+        console.log(this.state)
     }
     onDateChange = (date) => {
         this.setState({date})

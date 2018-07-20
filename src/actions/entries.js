@@ -1,6 +1,13 @@
-export const addEntry = (entry) => ({
+import uuid from 'uuid';
+
+// Restructuring this data because it was garbage before
+export const addEntry = ({date = '', entry = ''} = {}) => ({
     type: 'ADD_ENTRY',
-    entry
+    entryObj: {
+        id: uuid(),
+        date,
+        entry
+    }
 });
 
 export const editEntry = (id, updates) => ({

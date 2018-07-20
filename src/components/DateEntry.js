@@ -17,10 +17,13 @@ export const DateEntry = (props) => (
                     <span>No entry for today</span>
                 </div>
             ) : (
-                <Link to={`/edit/${moment(props.entries[0].date).format('MMMDYY')}`}> 
+                /*For right now, I'm just going to use the default moment, I'll use this later to make it look good
+                    `/edit/${moment(props.entries[0].date).format('MMMDYY')}`
+                */
+                <Link to={`/edit/${props.entries[0].date}`}> 
                     <div>
                         {/* using entry[0].entry is ugly, how do I make this better? */}
-                        {console.log(props)}
+                        {console.log(props.entries)}
                         {props.entries[0].entry}
                     </div>
                 </Link>
