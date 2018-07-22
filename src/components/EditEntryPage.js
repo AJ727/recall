@@ -9,9 +9,11 @@ import { editEntry, removeEntry } from '../actions/entries';
 export class EditEntryPage extends React.Component {
     onSubmit = (entryObj) => {
         this.props.editEntry(this.props.entryObj.id, entryObj);
+        this.props.history.push('/');
     }
     removeEntry = () => {
         this.props.removeEntry({ id: this.props.entryObj.id });
+        this.props.history.push('/');
     }
     render() {
         return (

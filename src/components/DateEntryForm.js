@@ -2,8 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
-
-// I need to fix the data here, it looks like entry{entry: 'aeoif', date:'2342'} or something which isn't right
 export default class DateEntryForm extends React.Component {
     constructor(props) {
         super(props);
