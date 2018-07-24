@@ -11,8 +11,8 @@ export const Header = ({ startLogout }) => (
             <Link className="header__title" to="/dashboard">
                 <h1>recall</h1>
             </Link>
-            <Link to="/add">
-                <h1>journal add</h1>
+            <Link className="header__title" to="/add">
+                <h1>new entry</h1>
             </Link>
             <button className="button button--link" onClick={startLogout}>Logout</button>
         </div>

@@ -14,14 +14,15 @@
     }
 }
 
-.list-item {
-    border: 1px solid darken($off-white, 7%);
-    border-top: none;
+.entry-item {
+    border: 2px solid darken($off-white, 7%);
     color: $dark-grey;
     display: flex;
     flex-direction: column;
     padding: $s-size;
     text-decoration: none;
+    margin: 0;
+    word-break: break-all;
     transition: background .3 ease;
     // equivalent to: .list-item:hover {}
     &:hover {
@@ -36,8 +37,9 @@
 }
 
 // --something <-- called a modifier
-.list-item--message {
+.entry-item--message {
     align-items: center;
+    border: none;
     color: $grey;
     justify-content: center;
     padding: $m-size;
@@ -46,17 +48,7 @@
     }
 }
 
-.list-item__title {
-    margin: 0;
-    word-break: break-all;
-}
-
-.list-item__subtitle {
-    color: $grey;
-    font-size: $font-size-small;
-}
-
-.list-item__data {    
+.entry-item__content {    
     margin: $s-size 0 0 0;
     
     @media (min-width: $desktop-breakpoint) {

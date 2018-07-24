@@ -11,15 +11,15 @@ export const DateEntry = ({entries}) => (
     <div>
         { 
             entries.length === 0 ? (
-                <div>
+                <div className="entry-item entry-item--message">
                     <span>No entry for today</span>
                 </div>
             ) : (
                 /* I wanted to use the date as the unique identifier instead of the id, but couldn't do it correctly
                     `/edit/${moment(props.entries[0].date).format('MMMDYY')}`
                 */
-                <Link to={`/edit/${entries.map((entry) => entry.id)}`}> 
-                    <div>
+                <Link className="entry-item" to={`/edit/${entries.map((entry) => entry.id)}`}> 
+                    <div className="entry-item__content">
                         {/* New problem, clicking edit on an entry auto enters in the current date,
                         but I want it to put the date the entry contains, into the date picker */}
                         {entries[0].entry}

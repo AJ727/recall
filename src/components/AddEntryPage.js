@@ -18,13 +18,15 @@ export class AddEntryPage extends React.Component {
     }
     render(){
         return (
-            <div>
+            <div className="content-container">
                 <div>
                     <h1>Add Journal Entry</h1>
                 </div>
-                <DateEntryForm 
-                    onSubmit={this.onSubmit}
-                />
+                <div className="form">
+                    <DateEntryForm 
+                        onSubmit={this.onSubmit}
+                    />
+                </div>
             </div>
         )
     }

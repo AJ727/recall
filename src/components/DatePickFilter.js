@@ -12,16 +12,18 @@ export class DatePickFilter extends React.Component {
     }
     render(){
         return (
-            <div>
-                <SingleDatePicker 
-                    date={this.props.filters.date}
-                    onDateChange={this.onDateChange}
-                    focused={this.state.focused}
-                    onFocusChange={({focused}) => this.setState({ focused })}
-                    numberOfMonths={1}
-                    isOutsideRange={() => false}
-                    id="FilterDate"
-                />
+            <div className="content-container">
+                <div className="input-group">
+                    <SingleDatePicker 
+                        date={this.props.filters.date}
+                        onDateChange={this.onDateChange}
+                        focused={this.state.focused}
+                        onFocusChange={({focused}) => this.setState({ focused })}
+                        numberOfMonths={1}
+                        isOutsideRange={() => false}
+                        id="FilterDate"
+                    />
+                </div>
             </div>
         )
     }

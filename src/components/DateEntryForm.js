@@ -35,24 +35,28 @@ export default class DateEntryForm extends React.Component {
     };
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-            {this.state.error && <p>{this.state.error}</p>}
-                <SingleDatePicker 
-                    date={this.state.date}
-                    onDateChange={this.onDateChange}
-                    focused={this.state.focused}
-                    onFocusChange={({focused}) => this.setState({ focused })}
-                    numberOfMonths={1}
-                    isOutsideRange={() => false}
-                    id="FormDate"
-                />
-                <textarea
-                    value={this.state.entry}
-                    onChange={this.onEntryChange}
-                    placeholder="Add today's journal entry!"
-                />
+            <form className="form" onSubmit={this.onSubmit}>
+            {this.state.error && <p className="form__error">{this.state.error}</p>}
                 <div>
-                    <button>Save Journal Entry</button>
+                    <SingleDatePicker 
+                        date={this.state.date}
+                        onDateChange={this.onDateChange}
+                        focused={this.state.focused}
+                        onFocusChange={({focused}) => this.setState({ focused })}
+                        numberOfMonths={1}
+                        isOutsideRange={() => false}
+                        id="FormDate"
+                    />  
+                </div>
+                <div>
+                    <textarea
+                        value={this.state.entry}
+                        onChange={this.onEntryChange}
+                        placeholder="Add today's journal entry!"
+                    />
+                </div>
+                <div>
+                    <button className="button">Save Journal Entry</button>
                 </div>
             </form>
         )
