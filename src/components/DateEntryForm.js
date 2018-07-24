@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
+// I don't think props are getting passed here properly
 export default class DateEntryForm extends React.Component {
     constructor(props) {
         super(props);
