@@ -19,7 +19,7 @@ export const DateEntry = ({entries}) => (
                     `/edit/${moment(props.entries[0].date).format('MMMDYY')}`
                 */
                 <Link className="entry-item" to={`/edit/${entries.map((entry) => entry.id)}`}> 
-                    <div className="entry-item__content">
+                    <div>
                         {/* New problem, clicking edit on an entry auto enters in the current date,
                         but I want it to put the date the entry contains, into the date picker */}
                         {entries[0].entry}

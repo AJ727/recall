@@ -17,13 +17,13 @@ export class EditEntryPage extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="content-container">
                 <h1>Edit Journal Entry</h1>
                 <DateEntryForm 
                     entry={this.props.entry}
                     onSubmit={this.onSubmit}
                 />
-                <button onClick={this.removeEntry}>Remove Entry</button>
+                <button className="button" onClick={this.removeEntry}>Remove Entry</button>
             </div>
         )
     }
