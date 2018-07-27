@@ -1,11 +1,11 @@
-.box-layout {
+.particles-layout {
     align-items: center;
-    background: url('/images/bg.jpg');
-    background-size: cover;
+    background-color: black;
     display: flex;
     height: 100vh;
     justify-content: center;
     width: 100vw;
+    position: relative;
 }
 
 .box-layout__box {
@@ -14,6 +14,12 @@
     padding: $l-size $m-size;
     text-align: center;
     width: 25rem;
+
+    position: absolute;
+    z-index: 10;
+    // Calculated these 2 values, by multiplying each by .05, then subtracting that from 50
+    top: 38%;
+    left: 40%;
 }
 
 .box-layout__title {
