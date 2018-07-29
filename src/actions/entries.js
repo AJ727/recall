@@ -13,6 +13,7 @@ export const addEntry = ({date = '', entry = ''} = {}) => ({
 export const startAddEntry = (entryData = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
+        // Destructure off entryData?
         const {
             date = '',
             entry = ""
@@ -79,6 +80,7 @@ export const startSetEntries = () => {
                     ...childSnapshot.val()
                 })
             })
+            // Pass in the newly made entries array
             dispatch(setEntries(entries));
         })
     }
