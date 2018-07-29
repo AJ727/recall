@@ -61,3 +61,25 @@ export const startRemoveEntry = ({ id } = {}) => {
         })
     }
 };
+
+export const setEntries = (entries) => ({
+    type: 'SET_ENTRIES',
+    entries
+});
+
+export const startSetEntries = () => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/entries`).once('value')
+        .then((snapshot) => {
+            const entries = [];
+            snapshot.forEach((childSnapshot) => {
+                entries.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                })
+            })
+            dispatch(setEntries(entries));
+        })
+    }
+};
