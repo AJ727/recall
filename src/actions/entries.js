@@ -82,3 +82,4 @@ export const startSetEntries = () => {
             dispatch(setEntries(entries));
         })
     }
+}

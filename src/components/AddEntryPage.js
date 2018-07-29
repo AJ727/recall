@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DateEntryForm from './DateEntryForm';
-import { addEntry } from '../actions/entries';
+import { startAddEntry } from '../actions/entries';
 import selectEntries from '../selectors/entries';
 
 // This Component renders a form, and upon submission, calls dispatch(addEntry(entryObj))
@@ -13,7 +13,7 @@ export class AddEntryPage extends React.Component {
         // render anything to the screen, for instance saying "Limit 1 entry!"
         // I feel like I should be rendering a message in DateEntry to show the limit message
         // NOTE: A modal could be good here?
-        this.props.entries.length >= 2 ? null : this.props.addEntry(entryObj);
+        this.props.entries.length >= 2 ? null : this.props.startAddEntry(entryObj);
         this.props.history.push('/');
     }
     render(){
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    addEntry : (entryObj) => dispatch(addEntry(entryObj))
+    startAddEntry : (entryObj) => dispatch(startAddEntry(entryObj))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddEntryPage);

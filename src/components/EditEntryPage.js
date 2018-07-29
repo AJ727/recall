@@ -1,18 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DateEntryForm from './DateEntryForm';
-import { editEntry, removeEntry } from '../actions/entries';
+import { startEditEntry, startRemoveEntry } from '../actions/entries';
 
 // REMINDER ABOUT mapDispatchToProps:
 // Right now "this.props.dispatch(editContent(stuff))" is being used
 // Using mapDispatchToProps allows the use of "this.props.editContent(stuff)" instead
 export class EditEntryPage extends React.Component {
     onSubmit = (entryObj) => {
-        this.props.editEntry(this.props.entryObj.id, entryObj);
+        this.props.startEditEntry(this.props.entryObj.id, entryObj);
         this.props.history.push('/');
     }
     removeEntry = () => {
-        this.props.removeEntry({ id: this.props.entryObj.id });
+        this.props.startRemoveEntry({ id: this.props.entryObj.id });
         this.props.history.push('/');
     }
     render() {
@@ -34,8 +34,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    editEntry: (id, entryObj) => dispatch(editEntry(id, entryObj)), 
-    removeEntry: ({ id }) => dispatch(removeEntry({ id }))
+    startEditEntry: (id, entryObj) => dispatch(startEditEntry(id, entryObj)), 
+    startRemoveEntry: ({ id }) => dispatch(startRemoveEntry({ id }))
 });
 
 export default connect (mapStateToProps, mapDispatchToProps)(EditEntryPage);
