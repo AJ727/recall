@@ -37,6 +37,16 @@ export const editEntry = (id, updates) => ({
     updates
 });
 
+export const startEditEntry = (id, updates) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        database.ref(`users/${uid}/entries/${id}`).update(updates)
+        .then(() => {
+            dispatch(editEntry(id, updates))
+        })
+    }
+};
+
 export const removeEntry = ({ id }) => ({
     type: 'REMOVE_ENTRY',
     id
