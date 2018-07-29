@@ -1,7 +1,8 @@
 import moment from 'moment';
 
 const filtersReducerDefaultState = {
-    date: moment().startOf('month')
+    // Defaults the filter to the current day
+    date: moment().startOf('day')
 };
 
 export default (state = filtersReducerDefaultState, action) => {
