@@ -25,11 +25,9 @@ export const startAddEntry = (entryData = {}) => {
                 dispatch(addEntry({
                     id: ref.key,
                     ...entry
-                }))
-            })
-
-        )
-    }
+                }));
+            });
+    };
 };
 
 export const editEntry = (id, updates) => ({
