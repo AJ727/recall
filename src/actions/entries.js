@@ -20,11 +20,11 @@ export const startAddEntry = (entryData = {}) => {
         // Destructure off entryData?
         const {
             date = '',
-            entry = ""
-        } = entryData
+            entry = ''
+        } = entryData;
 
         const entryObj = {date, entry};
-        return database.ref(`users/${uid}/entries`).push(entry)
+        return database.ref(`users/${uid}/entries`).push(entryObj)
             .then((ref) => {
                 dispatch(addEntry({
                     id: ref.key,
