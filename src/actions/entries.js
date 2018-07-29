@@ -42,3 +42,12 @@ export const removeEntry = ({ id }) => ({
     id
 });
 
+export const startRemoveEntry = ({ id } = {}) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/entries/${id}`).remove()
+        .then(() => {
+            dispatch(removeEntry({ id }))
+        })
+    }
+};
