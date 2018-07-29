@@ -25,6 +25,10 @@ export default (state = entryReducerDefaultState, action) => {
             return state.filter(({ id }) => 
                 id !== action.id
             );
+        case 'SET_ENTRIES':
+            // returns the entries array from actions/entries.js,
+            // specifically the setEntries action generator
+            return action.entries;
         
         default:
             return state; 

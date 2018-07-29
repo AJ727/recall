@@ -1,13 +1,17 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
 
-export const addEntry = ({date = '', entry = ''} = {}) => ({
+export const addEntry = (entryObj) => ({
     type: 'ADD_ENTRY',
-    entryObj: {
-        id: uuid(),
-        date,
-        entry
-    }
+    entryObj
+    // For this, I think startAddEntry is creating the data structure,
+    // for entry, and in the dispatch call, id is set, then the rest
+    // of the entry is returned?
+    // entryObj: {
+    //     id: uuid(),
+    //     date,
+    //     entry
+    // }
 });
 
 export const startAddEntry = (entryData = {}) => {
@@ -19,12 +23,12 @@ export const startAddEntry = (entryData = {}) => {
             entry = ""
         } = entryData
 
-        const entry = {date, entry};
+        const entryObj = {date, entry};
         return database.ref(`users/${uid}/entries`).push(entry)
             .then((ref) => {
                 dispatch(addEntry({
                     id: ref.key,
-                    ...entry
+                    ...entryObj
                 }));
             });
     };
