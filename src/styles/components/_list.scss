@@ -6,7 +6,7 @@
     padding: $s-size;
     text-decoration: none;
     margin: $s-size 0 0 0;
-    word-break: break-all;
+    word-break: normal;
     transition: background .3 ease;
     // equivalent to: .list-item:hover {}
     &:hover {
