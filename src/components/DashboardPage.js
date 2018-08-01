@@ -2,11 +2,11 @@ import React from 'react';
 import DatePickFilter from './DatePickFilter';
 import DateEntry from './DateEntry';
 
+// DatePickFilter will contain the filter that has the SingleDatePicker
+// DateEntry will be the contents of the that day, determined by DatePickFilter
 const DashboardPage = () => (
     <div>
-        {/* DatePickFilter will be the DatePicker component, that renders DateContent */}
         <DatePickFilter />
-        {/* DateContent will be the contents of the that day, determined by DatePickFilter */}
         <DateEntry />
     </div>
 );

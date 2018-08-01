@@ -29,6 +29,12 @@ export class EditEntryPage extends React.Component {
     }
 }
 
+// This finds the entryObj, who's ID matches the URL's ID, returning something like:
+// entryObj : {
+//      id: someID1234,
+//      date: 129093918,
+//      entry: "Well today I did blah..."
+// }
 const mapStateToProps = (state, props) => ({
     entryObj: state.entries.find((entryObj) => entryObj.id === props.match.params.id)
 });
