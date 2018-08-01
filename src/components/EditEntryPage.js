@@ -20,7 +20,7 @@ export class EditEntryPage extends React.Component {
             <div className="content-container">
                 <h1>Edit Journal Entry</h1>
                 <DateEntryForm 
-                    entry={this.props.entry}
+                    entryObj={this.props.entryObj}
                     onSubmit={this.onSubmit}
                 />
                 <button className="button" onClick={this.removeEntry}>Remove Entry</button>

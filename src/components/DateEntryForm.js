@@ -53,7 +53,6 @@ export default class DateEntryForm extends React.Component {
                     />  
                 </div>
                 <div>
-                    {console.log(this.state)}
                     <textarea
                         value={this.state.entry}
                         onChange={this.onEntryChange}
