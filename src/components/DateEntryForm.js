@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
-// I don't think props are getting passed here properly
 export default class DateEntryForm extends React.Component {
     constructor(props) {
         // We call the constructor and super, in order to pass props upstream
@@ -54,6 +53,7 @@ export default class DateEntryForm extends React.Component {
                     />  
                 </div>
                 <div>
+                    {console.log(this.state)}
                     <textarea
                         value={this.state.entry}
                         onChange={this.onEntryChange}

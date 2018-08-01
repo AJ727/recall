@@ -18,11 +18,13 @@ export const DateEntry = ({entries}) => (
                 /* I wanted to use the date as the unique identifier instead of the id, but couldn't do it correctly
                     `/edit/${moment(props.entries[0].date).format('MMMDYY')}`
                 */
-                <Link className="entry-item" to={`/edit/${entries.map((entry) => entry.id)}`}> 
-                    <div>
-                        {entries[0].entry}
-                    </div>
-                </Link>
+                entries.map(({ entry, id}) => (
+                    <Link className="entry-item" to={`/edit/${id}`} key={id}>
+                        <div>
+                            {entry}
+                        </div>
+                    </Link>
+                ))
             )
         }
     </div>
