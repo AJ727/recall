@@ -7,13 +7,13 @@ import selectEntries from '../selectors/entries';
 // This Component renders a form, and upon submission, calls dispatch(addEntry(entryObj))
 // which adds an instance of an entryObj into the entries array
 
+// TODO: Implement a 1 entry per day limit
 export class AddEntryPage extends React.Component {
+    state = {
+        at_entry_limit : false
+    }
     onSubmit = (entryObj) => {
-        // HELP: Right here is where I'm limiting the entries (it seems to be working), but this doesn't allow me to 
-        // render anything to the screen, for instance saying "Limit 1 entry!"
-        // I feel like I should be rendering a message in DateEntry to show the limit message
-        // NOTE: A modal could be good here?
-        this.props.entries.length >= 2 ? null : this.props.startAddEntry(entryObj);
+        this.props.startAddEntry(entryObj);
         this.props.history.push('/');
     }
     render(){
@@ -23,10 +23,10 @@ export class AddEntryPage extends React.Component {
                     <h1>Add Journal Entry</h1>
                 </div>
                 <div className="form">
-                    <DateEntryForm 
-                        onSubmit={this.onSubmit}
-                    />
-                </div>
+                        <DateEntryForm 
+                            onSubmit={this.onSubmit}
+                        />
+                    </div>
             </div>
         )
     }
