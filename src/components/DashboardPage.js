@@ -8,6 +8,7 @@ const DashboardPage = () => (
     <div>
         <DatePickFilter />
         <DateEntry />
+        <button onClick={console.log('click')}>View All</button>
     </div>
 );
 
