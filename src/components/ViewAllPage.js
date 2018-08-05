@@ -7,17 +7,19 @@ import { connect } from 'react-redux';
 
 export class ViewAllPage extends React.Component {
     render() {
-        <div>
+        return (
             <div>
-                <input
-                    type="text"
-                    placeholder="Search entries"
-                    value={this.props.filters.text}
-                    onChange={this.onTextChange}
-                />
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Search entries"
+                        // value={this.props.filters.text}
+                        // onChange={this.onTextChange}
+                    />
+                </div>
+                ENTRIESSS
             </div>
-            ENTRIESSS
-        </div>
+        )
     }
 }
 
