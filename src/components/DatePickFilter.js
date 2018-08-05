@@ -10,6 +10,9 @@ export class DatePickFilter extends React.Component {
     onDateChange = (date) => {
         this.props.setDate(date);
     }
+    onTextChange = (e) => {
+        this.props.setTextFilter(e.target.value);
+    }
     render(){
         return (
             <div className="content-container">
@@ -24,6 +27,14 @@ export class DatePickFilter extends React.Component {
                         id="FilterDate"
                     />
                 </div>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Search entries"
+                        value={this.props.filters.text}
+                        onChange={this.onTextChange}
+                    />
+                </div>
             </div>
         )
     }
@@ -34,7 +45,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    setDate: (date) => dispatch(setDate(date))
+    setDate: (date) => dispatch(setDate(date)),
+    setTextFilter: (text) => dispatch(setTextFilter(text))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DatePickFilter);
