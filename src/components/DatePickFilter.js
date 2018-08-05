@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { SingleDatePicker } from 'react-dates';
-import { setDate } from '../actions/filters';
+import { setDate, setTextFilter } from '../actions/filters';
 
 export class DatePickFilter extends React.Component {
     state = {
