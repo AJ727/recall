@@ -1,11 +1,15 @@
 import React from 'react';
 import { setTextFilter } from '../actions/filters';
 import { connect } from 'react-redux';
+import { RenderAllEntries } from './RenderAllEntries';
 
 // Component Specification: On the dashboard page, a button will be clicked to render 
 // this page, which returns ALL entries. A search feature will also be implemented into this
 
 export class ViewAllPage extends React.Component {
+    onTextChange = (e) => {
+        this.props.setTextFilter(e.target.value);
+     }
     render() {
         return (
             <div>
@@ -17,7 +21,7 @@ export class ViewAllPage extends React.Component {
                         // onChange={this.onTextChange}
                     />
                 </div>
-                ENTRIESSS
+                <RenderAllEntries />
             </div>
         )
     }
@@ -26,9 +30,5 @@ export class ViewAllPage extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
     setTextFilter: (text) => dispatch(setTextFilter(text))
 });
-
-// onTextChange = (e) => {
-//    this.props.setTextFilter(e.target.value);
-// }
 
 export default connect (undefined, mapDispatchToProps)(ViewAllPage);

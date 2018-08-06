@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 // DatePickFilter will contain the filter that has the SingleDatePicker
 // DateEntry will be the contents of the that day, determined by DatePickFilter
+// The Link element renders the ViewAllPage
 const DashboardPage = () => (
     <div>
         <DatePickFilter />
