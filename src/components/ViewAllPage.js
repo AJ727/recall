@@ -1,10 +1,10 @@
 import React from 'react';
-import { setTextFilter } from '../actions/filters';
 import { connect } from 'react-redux';
+import { setTextFilter } from '../actions/filters';
 import { RenderAllEntries } from './RenderAllEntries';
 
 // Component Specification: On the dashboard page, a button will be clicked to render 
-// this page, which returns ALL entries. A search feature will also be implemented into this
+// this page, which returns ALL entries. A search feature will also be implemented into this or the child component
 
 export class ViewAllPage extends React.Component {
     onTextChange = (e) => {
@@ -17,8 +17,8 @@ export class ViewAllPage extends React.Component {
                     <input
                         type="text"
                         placeholder="Search entries"
-                        // value={this.props.filters.text}
-                        // onChange={this.onTextChange}
+                        value={this.props.filters.text}
+                        onChange={this.onTextChange}
                     />
                 </div>
                 <RenderAllEntries />
@@ -27,8 +27,12 @@ export class ViewAllPage extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    filters: state.filters
+});
+
 const mapDispatchToProps = (dispatch) => ({
     setTextFilter: (text) => dispatch(setTextFilter(text))
 });
 
-export default connect (undefined, mapDispatchToProps)(ViewAllPage);
+export default connect (mapStateToProps, mapDispatchToProps)(ViewAllPage);
