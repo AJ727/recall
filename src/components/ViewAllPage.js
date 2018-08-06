@@ -14,6 +14,7 @@ export class ViewAllPage extends React.Component {
         return (
             <div>
                 <div>
+                    {/* this.props.filters.text <-- gets input each time you type something */}
                     <input
                         type="text"
                         placeholder="Search entries"
@@ -27,6 +28,7 @@ export class ViewAllPage extends React.Component {
     }
 }
 
+// Need this in order to access filters, which contains the current text filter
 const mapStateToProps = (state) => ({
     filters: state.filters
 });
