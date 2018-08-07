@@ -6,24 +6,22 @@ import database from '../firebase/firebase';
 // and a text filter will allow them to be searched through
 
 export class RenderAllEntries extends React.Component {
+    state = {
+        
+    }
+    componentDidMount(getState) {
+        const uid = getState().auth.uid;
+        const rootRef = database.ref(`users/${uid}/entries`);
+        return rootRef.once('value')
+        .then((snapshot) => console.log(snapshot))
+    }
     render() {
         return (
             <div>
-                {
-                    database.ref('/').once("value")
-                    .then((snapshot) => {
-                        snapshot.forEach((childSnapshot) => {
-                            return childSnapshot
-                        }) 
-                    })
-                }
+
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => ({
-    entries: state.entries
-});
-
-export default connect (mapStateToProps, undefined)(RenderAllEntries);
+export default connect ()(RenderAllEntries);
