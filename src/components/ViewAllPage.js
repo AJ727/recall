@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setTextFilter } from '../actions/filters';
-import { RenderAllEntries } from './RenderAllEntries';
 
 // Component Specification: On the dashboard page, a button will be clicked to render 
 // this page, which returns ALL entries. A search feature will also be implemented into this or the child component
@@ -25,7 +24,9 @@ export class ViewAllPage extends React.Component {
                 <div>
                     {console.log(this.props.entries)}
                     {
-                        this.props.entries.map((entry) => <div key={entry.id}>{entry}</div>)
+                        this.props.entries.map((entryObj) => (
+                            <div key={entryObj.id}>{entryObj.entry}</div>
+                        ))
                     }
                 </div>
             </div>
