@@ -87,8 +87,3 @@ export const startSetEntries = () => {
         })
     }
 }
-
-// I think I may need something like this to view all entries
-export const viewEntries = () => ({
-    type: 'VIEW_ENTRIES'
-});

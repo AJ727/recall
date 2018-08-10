@@ -20,7 +20,6 @@ export default (state = entryReducerDefaultState, action) => {
                     return entryObj;
                 }
             });
-            // HELP: why does this work? I thought if id == action.id, that would make sense
         case 'REMOVE_ENTRY':
             return state.filter(({ id }) => 
                 id !== action.id
