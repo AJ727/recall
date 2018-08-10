@@ -1,5 +1,7 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setTextFilter } from '../actions/filters';
 
 // Component Specification: On the dashboard page, a button will be clicked to render 
@@ -24,8 +26,12 @@ export class ViewAllPage extends React.Component {
                 <div>
                     {console.log(this.props.entries)}
                     {
-                        this.props.entries.map((entryObj) => (
-                            <div key={entryObj.id}>{entryObj.entry}</div>
+                        // For each entryObj, pull off the id, date, and entry properties (otherwise would have to be entryObj.id instead of just id)
+                        this.props.entries.map(({ id, date, entry }) => (
+                            <Link className="entry-item" to={`/edit/${id}`} key={id}>
+                                {<h1>{moment(date).format('MMM D YY')}</h1>}   
+                                {entry}
+                            </Link>
                         ))
                     }
                 </div>
