@@ -22,7 +22,12 @@ export class ViewAllPage extends React.Component {
                         onChange={this.onTextChange}
                     />
                 </div>
-                <RenderAllEntries />
+                <div>
+                    {console.log(this.props.entries)}
+                    {
+                        this.props.entries.map((entry) => <div key={entry.id}>{entry}</div>)
+                    }
+                </div>
             </div>
         )
     }
@@ -30,7 +35,8 @@ export class ViewAllPage extends React.Component {
 
 // Need this in order to access filters, which contains the current text filter
 const mapStateToProps = (state) => ({
-    filters: state.filters
+    filters: state.filters,
+    entries: state.entries
 });
 
 const mapDispatchToProps = (dispatch) => ({
