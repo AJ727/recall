@@ -32,9 +32,7 @@ export class AddEntryPage extends React.Component {
     }
 }
 
-// HELP: So right here, I'm trying to use mapStateToProps, in order to give myself ALL 
-// the entries for the day, and limiting it to 1 per day by checking the length, but when I do this, it does not
-// work as expected. It works in DateEntry.js but not here for some reason. 
+// Hoping to use this to limit the entry per day in the future
 const mapStateToProps = (state) => ({
     entries: selectEntries(state.entries, state.filters) 
 })

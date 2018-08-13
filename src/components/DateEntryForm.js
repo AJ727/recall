@@ -18,11 +18,14 @@ export default class DateEntryForm extends React.Component {
     onDateChange = (date) => {
         this.setState({date})
     }
+    // Whenever the user types something, update the state
     onEntryChange = (e) => {
         const entry = e.target.value;
         this.setState(() => ({entry}))
     }
+    // On submit, pass in the event
     onSubmit = (e) => {
+        // Prevent the page from reloading
         e.preventDefault();
         // If nothing was typed into the textarea
         if(!this.state.entry) {

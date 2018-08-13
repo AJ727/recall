@@ -6,10 +6,11 @@ import selectEntries from '../selectors/entries';
 // This Component's Purpose - Upon receiving a date from DatePickFilter, render corresponding journal entry
 // Ex. 4/23/2017 --> serve up the entry from that day
 
-// HELP: Is there a way to display the message, "Limit 1 entry per day" here?
+// Stateless functional component DateEntry
 export const DateEntry = ({entries}) => (
     <div>
         { 
+            // If there are no entries, return "No Entry For Today"
             entries.length === 0 ? (
                 <div className="entry-item entry-item--message">
                     <span>No entry for today</span>
