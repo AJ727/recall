@@ -1,4 +1,5 @@
 import React from 'react';
+import selectTextEntries from '../selectors/text-selector';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -9,6 +10,7 @@ import { setTextFilter } from '../actions/filters';
 
 export class ViewAllPage extends React.Component {
     onTextChange = (e) => {
+        // dispatch a setTextFilter action object
         this.props.setTextFilter(e.target.value);
      }
     render() {
@@ -40,10 +42,12 @@ export class ViewAllPage extends React.Component {
     }
 }
 
-// Need this in order to access filters, which contains the current text filter
+// selectEntries selector- 
+// params: current entries, and current filters
+// return: entries that contain the passed in filter
 const mapStateToProps = (state) => ({
     filters: state.filters,
-    entries: state.entries
+    entries: selectTextEntries(state.entries, state.filters)
 });
 
 const mapDispatchToProps = (dispatch) => ({

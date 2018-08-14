@@ -1,1 +1,0 @@
-// This selector will return the entries that match the string, specified in the text box
