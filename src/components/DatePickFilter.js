@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { SingleDatePicker } from 'react-dates';
 import { setDate } from '../actions/filters';
+import { Link } from 'react-router-dom';
+
 
 export class DatePickFilter extends React.Component {
     state = {
@@ -25,6 +27,9 @@ export class DatePickFilter extends React.Component {
                         id="FilterDate"
                     />
                 </div>
+                <Link className="button button--viewall" to="/all">
+                    View All
+                </Link>
             </div>
         )
     }
