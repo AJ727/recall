@@ -5,7 +5,7 @@
     flex-direction: column;
     padding: $s-size;
     text-decoration: none;
-    margin: $s-size 0 0 0;
+    margin: $s-size 0 $m-size 0;
     word-break: normal;
     transition: background .3 ease;
     // equivalent to: .list-item:hover {}
@@ -17,8 +17,8 @@
         align-items: center;
         flex-direction: row;
         justify-content: space-between;
-        padding: $m-size;
-        margin: 0 auto;
+        padding: $s-size;
+        margin: 0 auto $s-size auto;
         padding-left: $s-size;
         width: 50%;
     }

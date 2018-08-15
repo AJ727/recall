@@ -31,8 +31,11 @@ export class ViewAllPage extends React.Component {
                         // For each entryObj, pull off the id, date, and entry properties (otherwise would have to be entryObj.id instead of just id)
                         this.props.entries.map(({ id, date, entry }) => (
                             <Link className="entry-item" to={`/edit/${id}`} key={id}>
-                                {<h1>{moment(date).format('MMM D YY')}</h1>}   
-                                {entry}
+                                    <h4>
+                                        {moment(date).format('MMM D YY')}
+                                        <br/>
+                                        {entry}
+                                    </h4>
                             </Link>
                         ))
                     }
