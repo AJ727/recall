@@ -26,7 +26,6 @@ export class ViewAllPage extends React.Component {
                     />
                 </div>
                 <div>
-                    {console.log(this.props.entries)}
                     {
                         // For each entryObj, pull off the id, date, and entry properties (otherwise would have to be entryObj.id instead of just id)
                         this.props.entries.map(({ id, date, entry }) => (

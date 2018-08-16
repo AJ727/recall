@@ -15,7 +15,7 @@
 }
 
 .button--particles {
-    color: $dark-grey;
+    color: lighten($dark-grey, 15%);
     background-color: transparent;
     background-repeat: no-repeat;
     border: 1px solid $dark-grey;

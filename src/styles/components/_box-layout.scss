@@ -11,6 +11,7 @@
 .box-layout__box {
     background: none;
     border-radius: 3px;
+    color: lighten($dark-grey, 15%);
     font-size: $font-size-large;
     padding: $l-size $m-size;
     text-align: center;
