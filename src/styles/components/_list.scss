@@ -8,7 +8,7 @@
     margin: $s-size 0 $m-size 0;
     word-break: normal;
     transition: background .3 ease;
-    // equivalent to: .list-item:hover {}
+    // equivalent to: .entry-item:hover {}
     &:hover {
         background: $off-white;
     }
@@ -21,6 +21,12 @@
         margin: 0 auto $s-size auto;
         padding-left: $s-size;
         width: 50%;
+        // Target the date using psuedo-elements/classes
+        // TODO: does not work since flex is inherited...
+        // ::first-line does not work with flex, only block
+        &::first-line {
+            color: red;
+        }
     }
 }
 
