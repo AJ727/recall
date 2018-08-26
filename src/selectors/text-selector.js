@@ -7,5 +7,9 @@ export default (entries, {text}) => {
         // If true, return a new array with this specific entryObj,
         // and continue to the next object
         return textMatch;    
+    }).sort((a,b) => {
+        // compare function that sorts from newest to oldest
+        // if a's date is newer than b's, return true
+        return a.date < b.date ? 1 : -1;
     });
 };
