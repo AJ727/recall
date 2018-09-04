@@ -21,6 +21,7 @@ export class ViewAllPage extends React.Component {
                     <input
                         type="text"
                         placeholder="Search entries"
+                        className="viewall__text"
                         value={this.props.filters.text}
                         onChange={this.onTextChange}
                     />
