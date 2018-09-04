@@ -26,10 +26,11 @@ export class DatePickFilter extends React.Component {
                         isOutsideRange={() => false}
                         id="FilterDate"
                     />
+                    <Link className="button button--viewall" to="/all">
+                        View All
+                    </Link>
                 </div>
-                <Link className="button button--viewall" to="/all">
-                    View All
-                </Link>
+                
             </div>
         )
     }

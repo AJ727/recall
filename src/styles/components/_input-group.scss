@@ -5,6 +5,7 @@
 
     // For regular, larger screens
     @media (min-width: $desktop-breakpoint) {
+        margin-top: 3%;
         flex-direction: row;
         margin-bottom: $l-size; 
     }
