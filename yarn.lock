@@ -3966,6 +3966,10 @@ lodash@^4.0.0, lodash@^4.1.1, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, 
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
 
+lodash@^4.17.11:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548
+  
 longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
@@ -5290,9 +5294,9 @@ react-dom-factories@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-dom-factories/-/react-dom-factories-1.0.2.tgz#eb7705c4db36fb501b3aa38ff759616aa0ff96e0"
 
-react-dom@16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.0.0.tgz#9cc3079c3dcd70d4c6e01b84aab2a7e34c303f58"
+react-dom@16.0.1:
+  version "16.0.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.0.1.tgz#bd2fc18d2bb81645cb807bb27a03a14d8b796e6d"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
