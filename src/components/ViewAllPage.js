@@ -22,6 +22,7 @@ export class ViewAllPage extends React.Component {
                         type="text"
                         placeholder="Search entries"
                         className="viewall__text"
+                        size={100}
                         value={this.props.filters.text}
                         onChange={this.onTextChange}
                     />

@@ -14,7 +14,7 @@ export default class DateEntryForm extends React.Component {
             error: ''
         }
     }
-    // On date change, take in the new date, and set the new state for date, to that new date
+    // On date change, grab the new data and update the state
     onDateChange = (date) => {
         this.setState({date})
     }
