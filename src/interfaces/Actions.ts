@@ -1,7 +1,7 @@
 import moment = require("moment");
 
 export interface Entry {
-    date: moment.Moment;
+    date: moment.Moment | number;
     entry: string;
     id?: number;
 }

@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import DateEntryForm from './DateEntryForm';
 import { startAddEntry } from '../actions/entries';
 import selectEntries from '../selectors/entries';
+import { Entry } from '../interfaces/Actions';
 
 // This Component renders a form, and upon submission, calls dispatch(addEntry(entryObj))
 // which adds an instance of an entryObj into the entries array
 
 export interface IProps {
-    startAddEntry(entryObj: Object): void;
+    startAddEntry(entryObj: Entry): void;
     history: any;
 }
 
@@ -17,7 +18,7 @@ export class AddEntryPage extends React.Component<IProps, object> {
     public state = {
         at_entry_limit : false
     }
-    protected onSubmit = (entryObj: Object): void => {
+    protected onSubmit = (entryObj: Entry): void => {
         const { startAddEntry, history } = this.props;
         startAddEntry(entryObj);
         history.push('/');

@@ -33,7 +33,7 @@ module.exports = (env) => {
                     exclude: /node_modules/
                 }, 
                 {
-                    test: /\.ts?x$/,
+                    test: /\.tsx?$/,
                     loader: "ts-loader"
                 },
                 {

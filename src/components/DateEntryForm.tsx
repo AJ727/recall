@@ -1,14 +1,15 @@
 import * as React from 'react';
 import * as moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
+import { Entry } from '../interfaces/Actions';
 
 export interface IDateEntryFormProps {
-    onSubmit(entry: Object): void;
+    onSubmit(entry: Entry): void;
 }
 
 export interface IDateEntryFormState {
     date: moment.Moment;
-    entry: any;
+    entry: string;
     focused: boolean;
     error: string;
 }
