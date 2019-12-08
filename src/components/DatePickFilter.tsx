@@ -1,19 +1,28 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { SingleDatePicker } from 'react-dates';
 import { setDate } from '../actions/filters';
 import { Link } from 'react-router-dom';
+import moment = require('moment');
 
+export interface IDatePickFilterProps {
+    setDate(date: moment.Moment): void;
+    filters: any;
+}
 
-export class DatePickFilter extends React.Component {
-    state = {
+export interface IDatePickFilterState {
+    focused: boolean;
+}
+
+export class DatePickFilter extends React.Component<IDatePickFilterProps, IDatePickFilterState> {
+    public state = {
         focused: null
     }
-    onDateChange = (date) => {
+    protected onDateChange = (date: moment.Moment) => {
         this.props.setDate(date);
     }
     
-    render(){
+    public render(): JSX.Element {
         return (
             <div className="content-container">
                 <div className="input-group">
