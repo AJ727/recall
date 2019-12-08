@@ -4,7 +4,7 @@ import { SingleDatePicker } from 'react-dates';
 import { Entry } from '../interfaces/Actions';
 
 export interface IDateEntryFormProps {
-    onSubmit(entry: Entry): void;
+    onSubmit({ entry: string, date: number }): void;
     entryObj: Entry;
 }
 

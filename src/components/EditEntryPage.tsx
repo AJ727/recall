@@ -11,7 +11,8 @@ import { Entry } from '../interfaces/Actions';
 export interface IEditEntryPageProps {
     entryObj: Entry;
     startEditEntry(id: number, entryObj: Entry): void;
-    startRemoveEntry(entryObj: Entry): void;
+    // id is destructured off of Entry
+    startRemoveEntry({ id }): void;
     history: any;
 }
 
@@ -20,8 +21,8 @@ export class EditEntryPage extends React.Component<IEditEntryPageProps, any> {
         this.props.startEditEntry(this.props.entryObj.id, entryObj);
         this.props.history.push('/');
     }
-    public removeEntry = () => {
-        this.props.startRemoveEntry({ id: this.props.entryObj.id });
+    public removeEntry = (): void => {
+        this.props.startRemoveEntry({id: this.props.entryObj.id});
         this.props.history.push('/');
     }
     public render(): JSX.Element {
