@@ -10,7 +10,6 @@ import ViewAllPage from '../components/ViewAllPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
-
 // Stateless functional React Component
 // path = where we want to show something
 // component = what we want to render, when we match the route

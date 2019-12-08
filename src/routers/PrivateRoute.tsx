@@ -1,11 +1,18 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 
 // Unconnected Stateless Functional Component
 // ...rest gets the rest of the props (so not isAuth or component)
-export const PrivateRoute = ({ isAuthenticated, component: Component, ...rest}) => (
+
+// Need to figure this one out
+export interface AuthComponent {
+    isAuthenticated: boolean;
+    component: any;
+}
+
+export const PrivateRoute = ({ isAuthenticated, component: Component, ...rest}: any) => (
     <Route {...rest} component={(props) => (
         isAuthenticated ? (
             <div>
