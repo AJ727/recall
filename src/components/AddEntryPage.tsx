@@ -11,6 +11,7 @@ import { Entry } from '../interfaces/Actions';
 export interface IProps {
     startAddEntry(entryObj: Entry): void;
     history: any;
+    entryObj: Entry;
 }
 
 // TODO: Implement a 1 entry per day limit
@@ -32,6 +33,9 @@ export class AddEntryPage extends React.Component<IProps, object> {
                 <div className="form">
                         <DateEntryForm 
                             onSubmit={this.onSubmit}
+                            // Note: I added this due to typescript complaining about this object not being passed in. I think "connect" at the bottom
+                            // was already taking care of this, but I'm not sure so I'm passing it in anyway
+                            entryObj={this.props.entryObj}
                         />
                 </div>
             </div>
@@ -45,7 +49,7 @@ const mapStateToProps = (state: any) => ({
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
-    startAddEntry : (entryObj: any) => dispatch(startAddEntry(entryObj))
+    startAddEntry : (entryObj: Entry) => dispatch(startAddEntry(entryObj))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddEntryPage);

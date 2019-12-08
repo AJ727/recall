@@ -5,6 +5,7 @@ import { Entry } from '../interfaces/Actions';
 
 export interface IDateEntryFormProps {
     onSubmit(entry: Entry): void;
+    entryObj: Entry;
 }
 
 export interface IDateEntryFormState {
@@ -15,7 +16,7 @@ export interface IDateEntryFormState {
 }
 
 export default class DateEntryForm extends React.Component<IDateEntryFormProps, IDateEntryFormState> {
-    constructor(props) {
+    constructor(props: IDateEntryFormProps) {
         // We call the constructor and super, in order to pass props upstream
         super(props);
         this.state = {
