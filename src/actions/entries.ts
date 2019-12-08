@@ -1,7 +1,8 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
+import { Entry, AddEntry } from '../interfaces/Actions';
 
-export const addEntry = (entryObj) => ({
+export const addEntry = (entryObj: Entry): AddEntry => ({
     type: 'ADD_ENTRY',
     entryObj
     // For this, I think startAddEntry is creating the data structure,
@@ -14,7 +15,7 @@ export const addEntry = (entryObj) => ({
     // }
 });
 
-export const startAddEntry = (entryData = {}) => {
+export const startAddEntry = (entryData: any = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         // Destructure off entryData?
@@ -23,7 +24,7 @@ export const startAddEntry = (entryData = {}) => {
             entry = ''
         } = entryData;
 
-        const entryObj = {date, entry};
+        const entryObj: Entry = {date, entry};
         return database.ref(`users/${uid}/entries`).push(entryObj)
             .then((ref) => {
                 dispatch(addEntry({
@@ -55,7 +56,7 @@ export const removeEntry = ({ id }) => ({
     id
 });
 
-export const startRemoveEntry = ({ id } = {}) => {
+export const startRemoveEntry = ({ id }: any = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         return database.ref(`users/${uid}/entries/${id}`).remove()

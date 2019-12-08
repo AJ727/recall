@@ -17,7 +17,7 @@ export class AddEntryPage extends React.Component<IProps, object> {
     public state = {
         at_entry_limit : false
     }
-    private onSubmit = (entryObj: Object): void => {
+    protected onSubmit = (entryObj: Object): void => {
         const { startAddEntry, history } = this.props;
         startAddEntry(entryObj);
         history.push('/');

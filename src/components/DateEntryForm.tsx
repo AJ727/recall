@@ -7,7 +7,7 @@ export interface IDateEntryFormProps {
 }
 
 export interface IDateEntryFormState {
-    date: Object;
+    date: moment.Moment;
     entry: any;
     focused: boolean;
     error: string;
@@ -45,6 +45,7 @@ export default class DateEntryForm extends React.Component<IDateEntryFormProps, 
         // Clear the error, and submit the new entry and date
         else {
             this.setState(() => ({ error: '' }));
+            // This onSubmit function is passed in from AddEntryPage
             this.props.onSubmit({
                 entry: this.state.entry,
                 date: this.state.date.valueOf()
