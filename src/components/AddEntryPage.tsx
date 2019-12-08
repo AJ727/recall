@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import DateEntryForm from './DateEntryForm.js';
-import { startAddEntry } from '../actions/entries.js';
-import selectEntries from '../selectors/entries.js';
+import DateEntryForm from './DateEntryForm';
+import { startAddEntry } from '../actions/entries';
+import selectEntries from '../selectors/entries';
 
 // This Component renders a form, and upon submission, calls dispatch(addEntry(entryObj))
 // which adds an instance of an entryObj into the entries array

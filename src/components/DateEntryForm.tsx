@@ -2,9 +2,18 @@ import * as React from 'react';
 import * as moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
+export interface IDateEntryFormProps {
+    onSubmit(entry: Object): void;
+}
 
+export interface IDateEntryFormState {
+    date: Object;
+    entry: any;
+    focused: boolean;
+    error: string;
+}
 
-export default class DateEntryForm extends React.Component<any, any> {
+export default class DateEntryForm extends React.Component<IDateEntryFormProps, IDateEntryFormState> {
     constructor(props) {
         // We call the constructor and super, in order to pass props upstream
         super(props);
@@ -17,18 +26,18 @@ export default class DateEntryForm extends React.Component<any, any> {
         }
     }
     // On date change, grab the new data and update the state
-    onDateChange = (date): void => {
+    private onDateChange = (date: moment.Moment): void => {
         this.setState({date})
     }
     // Whenever the user types something, update the state
-    onEntryChange = (e): void => {
-        const entry = e.target.value;
+    private onEntryChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+        const entry = event.target.value;
         this.setState(() => ({entry}))
     }
     // On submit, pass in the event
-    onSubmit = (e) => {
+    private onSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
         // Prevent the page from reloading
-        e.preventDefault();
+        event.preventDefault();
         // If nothing was typed into the textarea
         if(!this.state.entry) {
             this.setState(() => ({ error: 'Provide a valid journal entry!' }));
@@ -42,7 +51,8 @@ export default class DateEntryForm extends React.Component<any, any> {
             });
         }
     };
-    render() {
+
+    public render(): JSX.Element {
         return (
             <form className="form" onSubmit={this.onSubmit}>
             {this.state.error && <p className="form__error">{this.state.error}</p>}
