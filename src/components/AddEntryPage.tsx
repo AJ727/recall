@@ -7,22 +7,22 @@ import selectEntries from '../selectors/entries.js';
 // This Component renders a form, and upon submission, calls dispatch(addEntry(entryObj))
 // which adds an instance of an entryObj into the entries array
 
-// export interface props {
-//     startAddEntry: any;
-//     history:any;
-// }
+export interface IProps {
+    startAddEntry(entryObj: Object): void;
+    history: any;
+}
 
 // TODO: Implement a 1 entry per day limit
-export class AddEntryPage extends React.Component<any, object> {
-    state = {
+export class AddEntryPage extends React.Component<IProps, object> {
+    public state = {
         at_entry_limit : false
     }
-    onSubmit = (entryObj: any): void => {
+    private onSubmit = (entryObj: Object): void => {
         const { startAddEntry, history } = this.props;
-        this.props.startAddEntry(entryObj);
-        this.props.history.push('/');
+        startAddEntry(entryObj);
+        history.push('/');
     }
-    render(){
+    public render(): JSX.Element {
         return (
             <div className="content-container">
                 <div>
