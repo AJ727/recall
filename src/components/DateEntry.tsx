@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import selectEntries from '../selectors/entries';
@@ -6,8 +6,12 @@ import selectEntries from '../selectors/entries';
 // This Component's Purpose - Upon receiving a date from DatePickFilter, render corresponding journal entry
 // Ex. 4/23/2017 --> serve up the entry from that day
 
+export interface IEntries {
+    entries: any;
+}
+
 // Stateless functional component DateEntry
-export const DateEntry = ({entries}) => (
+export const DateEntry = ({entries}): JSX.Element => (
     <div>
         { 
             // If there are no entries, return "No Entry For Today"

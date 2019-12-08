@@ -1,8 +1,10 @@
-import React from 'react';
-import moment from 'moment';
+import * as React from 'react';
+import * as moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
-export default class DateEntryForm extends React.Component {
+
+
+export default class DateEntryForm extends React.Component<any, any> {
     constructor(props) {
         // We call the constructor and super, in order to pass props upstream
         super(props);
@@ -15,11 +17,11 @@ export default class DateEntryForm extends React.Component {
         }
     }
     // On date change, grab the new data and update the state
-    onDateChange = (date) => {
+    onDateChange = (date): void => {
         this.setState({date})
     }
     // Whenever the user types something, update the state
-    onEntryChange = (e) => {
+    onEntryChange = (e): void => {
         const entry = e.target.value;
         this.setState(() => ({entry}))
     }
