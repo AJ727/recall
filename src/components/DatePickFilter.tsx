@@ -5,12 +5,12 @@ import { setDate } from '../actions/filters';
 import { Link } from 'react-router-dom';
 import moment = require('moment');
 
-export interface IDatePickFilterProps {
-    setDate(date: moment.Moment): void;
+interface IDatePickFilterProps {
+    setDate: (date: moment.Moment) => void;
     filters: any;
 }
 
-export interface IDatePickFilterState {
+interface IDatePickFilterState {
     focused: boolean;
 }
 

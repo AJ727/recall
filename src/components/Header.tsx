@@ -8,7 +8,7 @@ export interface IHeaderProps {
 }
 
 // activeClassName only gets applied when the page is the one clicked on
-export const Header = ({ startLogout }: IHeaderProps): JSX.Element => (
+export const Header: React.FC<IHeaderProps> = ({ startLogout }: IHeaderProps): JSX.Element => (
     <header className="header">
     <div className="content-container">
         <div className="header__content">

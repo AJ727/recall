@@ -11,7 +11,7 @@ export interface IEntries {
 }
 
 // Stateless functional component DateEntry
-export const DateEntry = ({entries}): JSX.Element => (
+export const DateEntry: React.FC<IEntries> = ({entries}): JSX.Element => (
     <div>
         { 
             // If there are no entries, return "No Entry For Today"

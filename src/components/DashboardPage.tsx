@@ -5,7 +5,7 @@ import DateEntry from './DateEntry';
 // DatePickFilter will contain the filter that has the SingleDatePicker
 // DateEntry will be the contents of the that day, determined by DatePickFilter
 // The Link element renders the ViewAllPage button
-const DashboardPage = (): JSX.Element => (
+const DashboardPage: React.FC = (): JSX.Element => (
     <div>
         <DatePickFilter />
         <DateEntry />

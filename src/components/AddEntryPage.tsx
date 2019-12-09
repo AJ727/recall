@@ -8,7 +8,7 @@ import { Entry } from '../interfaces/Actions';
 // This Component renders a form, and upon submission, calls dispatch(addEntry(entryObj))
 // which adds an instance of an entryObj into the entries array
 
-export interface IProps {
+interface IProps {
     startAddEntry(entryObj: Entry): void;
     history: any;
     entryObj: Entry;

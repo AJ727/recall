@@ -10,9 +10,9 @@ import { Entry } from '../interfaces/Actions';
 
 export interface IEditEntryPageProps {
     entryObj: Entry;
-    startEditEntry(id: number, entryObj: Entry): void;
+    startEditEntry: (id: number, entryObj: Entry) => void;
     // id is destructured off of Entry
-    startRemoveEntry({ id }): void;
+    startRemoveEntry: ({ id }) => void;
     history: any;
 }
 
