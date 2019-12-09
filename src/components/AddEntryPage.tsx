@@ -9,7 +9,7 @@ import { Entry } from '../interfaces/Actions';
 // which adds an instance of an entryObj into the entries array
 
 interface IProps {
-    startAddEntry(entryObj: Entry): void;
+    startAddEntry: (entryObj: Entry) => void;
     history: any;
     entryObj: Entry;
 }
