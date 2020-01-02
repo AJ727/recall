@@ -6,7 +6,7 @@ export interface Entry {
     id: number;
 }
 
-// Base Fgnctions and variations
+// Base Functions and variations
 export interface BaseActionFunction {
     type: string;
 }
