@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import DashboardPage from '../components/DashboardPage';
@@ -9,7 +9,6 @@ import EditEntryPage from '../components/EditEntryPage';
 import ViewAllPage from '../components/ViewAllPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-
 
 // Stateless functional React Component
 // path = where we want to show something

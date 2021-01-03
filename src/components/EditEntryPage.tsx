@@ -1,21 +1,31 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import DateEntryForm from './DateEntryForm';
 import { startEditEntry, startRemoveEntry } from '../actions/entries';
+import { Entry } from '../interfaces/Actions';
 
 // REMINDER ABOUT mapDispatchToProps:
 // Right now "this.props.dispatch(editContent(stuff))" is being used
 // Using mapDispatchToProps allows the use of "this.props.editContent(stuff)" instead
-export class EditEntryPage extends React.Component {
-    onSubmit = (entryObj) => {
+
+export interface IEditEntryPageProps {
+    entryObj: Entry;
+    startEditEntry: (id: number, entryObj: Entry) => void;
+    // id is destructured off of Entry
+    startRemoveEntry: ({ id }) => void;
+    history: any;
+}
+
+export class EditEntryPage extends React.Component<IEditEntryPageProps, any> {
+    public onSubmit = (entryObj: Entry): void => {
         this.props.startEditEntry(this.props.entryObj.id, entryObj);
         this.props.history.push('/');
     }
-    removeEntry = () => {
-        this.props.startRemoveEntry({ id: this.props.entryObj.id });
+    public removeEntry = (): void => {
+        this.props.startRemoveEntry({id: this.props.entryObj.id});
         this.props.history.push('/');
     }
-    render() {
+    public render(): JSX.Element {
         return (
             <div className="content-container">
                 <h1>Edit Journal Entry</h1>

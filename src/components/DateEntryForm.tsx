@@ -1,9 +1,22 @@
-import React from 'react';
-import moment from 'moment';
+import * as React from 'react';
+import * as moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
+import { Entry } from '../interfaces/Actions';
 
-export default class DateEntryForm extends React.Component {
-    constructor(props) {
+export interface IDateEntryFormProps {
+    onSubmit({ entry: string, date: number }): void;
+    entryObj: Entry;
+}
+
+export interface IDateEntryFormState {
+    date: moment.Moment;
+    entry: string;
+    focused: boolean;
+    error: string;
+}
+
+export default class DateEntryForm extends React.Component<IDateEntryFormProps, IDateEntryFormState> {
+    constructor(props: IDateEntryFormProps) {
         // We call the constructor and super, in order to pass props upstream
         super(props);
         this.state = {
@@ -15,18 +28,18 @@ export default class DateEntryForm extends React.Component {
         }
     }
     // On date change, grab the new data and update the state
-    onDateChange = (date) => {
+    private onDateChange = (date: moment.Moment): void => {
         this.setState({date})
     }
     // Whenever the user types something, update the state
-    onEntryChange = (e) => {
-        const entry = e.target.value;
+    private onEntryChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+        const entry = event.target.value;
         this.setState(() => ({entry}))
     }
     // On submit, pass in the event
-    onSubmit = (e) => {
+    private onSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
         // Prevent the page from reloading
-        e.preventDefault();
+        event.preventDefault();
         // If nothing was typed into the textarea
         if(!this.state.entry) {
             this.setState(() => ({ error: 'Provide a valid journal entry!' }));
@@ -34,13 +47,15 @@ export default class DateEntryForm extends React.Component {
         // Clear the error, and submit the new entry and date
         else {
             this.setState(() => ({ error: '' }));
+            // This onSubmit function is passed in from AddEntryPage
             this.props.onSubmit({
                 entry: this.state.entry,
                 date: this.state.date.valueOf()
             });
         }
     };
-    render() {
+
+    public render(): JSX.Element {
         return (
             <form className="form" onSubmit={this.onSubmit}>
             {this.state.error && <p className="form__error">{this.state.error}</p>}

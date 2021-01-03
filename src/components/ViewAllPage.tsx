@@ -1,15 +1,22 @@
-import React from 'react';
+import * as React from 'react';
 import selectTextEntries from '../selectors/text-selector';
-import moment from 'moment';
+import * as moment from 'moment';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setTextFilter } from '../actions/filters';
+import { Entry } from '../interfaces/Actions';
 
 // Component Specification: On the dashboard page, a button will be clicked to render 
 // this page, which returns ALL entries. A search feature will also be implemented into this or the child component
 
-export class ViewAllPage extends React.Component {
-    onTextChange = (e) => {
+interface IProps {
+    setTextFilter: (value: string) => void;
+    filters: any;
+    entries: Entry[];
+}
+
+export class ViewAllPage extends React.Component<IProps, any> {
+    onTextChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         // dispatch a setTextFilter action object
         this.props.setTextFilter(e.target.value);
      }

@@ -1,7 +1,8 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
+import { Entry, AddEntry, RemoveEntry, SetEntries, EditEntry } from '../interfaces/Actions';
 
-export const addEntry = (entryObj) => ({
+export const addEntry = (entryObj: Entry): AddEntry => ({
     type: 'ADD_ENTRY',
     entryObj
     // For this, I think startAddEntry is creating the data structure,
@@ -14,16 +15,13 @@ export const addEntry = (entryObj) => ({
     // }
 });
 
-export const startAddEntry = (entryData = {}) => {
+export const startAddEntry = (entryData: any = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        // Destructure off entryData?
-        const {
-            date = '',
-            entry = ''
-        } = entryData;
+        const { date = '', entry = '' } = entryData;
 
-        const entryObj = {date, entry};
+        // Not an Entry yet, because the id isn't put on until 4 lines down
+        const entryObj: any = {date, entry};
         return database.ref(`users/${uid}/entries`).push(entryObj)
             .then((ref) => {
                 dispatch(addEntry({
@@ -34,13 +32,13 @@ export const startAddEntry = (entryData = {}) => {
     };
 };
 
-export const editEntry = (id, updates) => ({
+export const editEntry = (id: number, updates): EditEntry => ({
     type: 'EDIT_ENTRY',
     id, 
     updates
 });
 
-export const startEditEntry = (id, updates) => {
+export const startEditEntry = (id: number, updates) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         database.ref(`users/${uid}/entries/${id}`).update(updates)
@@ -50,12 +48,12 @@ export const startEditEntry = (id, updates) => {
     }
 };
 
-export const removeEntry = ({ id }) => ({
+export const removeEntry = ({ id }): RemoveEntry => ({
     type: 'REMOVE_ENTRY',
     id
 });
 
-export const startRemoveEntry = ({ id } = {}) => {
+export const startRemoveEntry = ({ id }: any = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         return database.ref(`users/${uid}/entries/${id}`).remove()
@@ -65,7 +63,7 @@ export const startRemoveEntry = ({ id } = {}) => {
     }
 };
 
-export const setEntries = (entries) => ({
+export const setEntries = (entries): SetEntries => ({
     type: 'SET_ENTRIES',
     entries
 });

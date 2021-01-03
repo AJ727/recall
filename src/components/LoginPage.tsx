@@ -1,9 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
 import Particles from 'react-particles-js';
 
-export const LoginPage = ({ startLogin }) => (
+interface ILoginProps {
+    startLogin: any;
+}
+
+export const LoginPage: React.FC<ILoginProps> = ({ startLogin }: ILoginProps): JSX.Element => (
     <div>
         {/* I think this can also be defined in the json file */}
         <Particles 
