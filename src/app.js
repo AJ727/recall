@@ -11,9 +11,15 @@ import {firebase} from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 import { startSetEntries } from './actions/entries';
 
+// TODO:
+// Change from class based to functional components
+// Type everything with TS
+// Redo this project but with .NET as a backend instead
+// Change to PostGres
+// Testing?
+
 const store = configureStore();
 
-// set store equal to where the store lives
 const jsx = (
     <Provider store={store}>
         <AppRouter />
