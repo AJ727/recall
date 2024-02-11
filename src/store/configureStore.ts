@@ -10,7 +10,7 @@ import filtersReducer from '../reducers/filters';
 const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose;
 
 export default () => {
-    const store = createStore(
+    const store: any = createStore(
         combineReducers({
             entries: entriesReducer,
             filters: filtersReducer,
