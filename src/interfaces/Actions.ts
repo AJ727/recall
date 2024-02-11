@@ -3,7 +3,7 @@ import moment = require("moment");
 export interface Entry {
     date: moment.Moment | number;
     entry: string;
-    id: number;
+    id?: number;
 }
 
 // Base Functions and variations
