@@ -1,6 +1,6 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase';
 
-export const login = (uid) => ({
+export const login = (uid: string) => ({
     type: 'LOGIN',
     uid
 });
@@ -17,7 +17,7 @@ export const logout = () => ({
     type: 'LOGOUT'
 });
 
-export const startLogout = () => {
+export const startLogout = (): () => Promise<void> => {
     return () => {
         return firebase.auth().signOut();
     }

@@ -20,7 +20,7 @@ module.exports = (env) => {
         resolve: {
             extensions: [".js", ".ts", ".tsx"]
         },
-        entry: ['babel-polyfill', './src/app.js'],
+        entry: ['babel-polyfill', './src/app.tsx'],
         output: {
             path: path.join(__dirname, '/public', 'dist'),
             filename: 'bundle.js'
