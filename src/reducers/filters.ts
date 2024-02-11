@@ -1,4 +1,4 @@
-import moment from 'moment';
+import * as moment from 'moment';
 
 const filtersReducerDefaultState = {
     // Defaults the filter to the current day, and text to an empty string
