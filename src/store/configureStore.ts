@@ -7,7 +7,7 @@ import filtersReducer from '../reducers/filters';
 // Store creation
 // combineReducers expects an object, the root object and the reducer that manages it
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose;
 
 export default () => {
     const store = createStore(
