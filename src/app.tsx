@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
@@ -18,21 +18,15 @@ import { startSetEntries } from './actions/entries';
 // Change to PostGres
 // Testing?
 
-const store = configureStore();
+const store: any = configureStore();
 
-const jsx = (
-    <Provider store={store}>
-        <AppRouter />
-    </Provider>
-)
-
-let hasRendered = false;
-const renderApp = () => {
-    console.log('renderApp called...')
+let hasRendered: boolean = false;
+const renderApp = (): void => {
     if (!hasRendered) {
-        console.log('Not rendered.')
         ReactDOM.render(
-            jsx
+            <Provider store={store}>
+                <AppRouter />
+            </Provider>
         , document.getElementById('app'));
         hasRendered = true;
     }
@@ -41,42 +35,24 @@ const renderApp = () => {
 console.log('Rendering loadingpage.')
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
-firebase.auth().onAuthStateChanged((user) => {
-    if(user){
-        store.dispatch(login(user.uid));
-        store.dispatch(startSetEntries())
-            .then(() => {
-                renderApp();
-                    if(history.location.pathname === '/') {
-                        history.push('/dashboard'); 
-                    }
-            })
-    }
-    else {
-        store.dispatch(logout());
-        renderApp();
-        history.push('/');
-    }
-});
+// When authenticted state is changed (ex unauth --> auth, auth --> unauth)
+const startAuth = () => {
+    console.log('Starting Auth.')
+    firebase.auth().onAuthStateChanged(async (user) => {
+        if (user) {
+            store.dispatch(login(user.uid));
+            await store.dispatch(startSetEntries());
+            renderApp();
+            if(history.location.pathname === '/') {
+                history.push('/dashboard'); 
+            }
+        }
+        else {
+            store.dispatch(logout());
+            renderApp();
+            history.push('/');
+        }
+    });
+}
 
-// // When authenticted state is changed (ex unauth --> auth, auth --> unauth)
-// const startAuth = () => {
-//     console.log('Starting Auth.')
-//     firebase.auth().onAuthStateChanged(async (user) => {
-//         if (user) {
-//             store.dispatch(login(user.uid));
-//             await store.dispatch(startSetEntries());
-//             renderApp();
-//             if(history.location.pathname === '/') {
-//                 history.push('/dashboard'); 
-//             }
-//         }
-//         else {
-//             store.dispatch(logout());
-//             renderApp();
-//             history.push('/');
-//         }
-//     });
-// }
-
-// startAuth();
+startAuth();
