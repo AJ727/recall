@@ -16,27 +16,27 @@ export interface IEditEntryPageProps {
     history: any;
 }
 
-export class EditEntryPage extends React.Component<IEditEntryPageProps, any> {
-    public onSubmit = (entryObj: Entry): void => {
-        this.props.startEditEntry(this.props.entryObj.id, entryObj);
-        this.props.history.push('/');
+export const EditEntryPage = (props: IEditEntryPageProps) => {
+    const { entryObj, startEditEntry, startRemoveEntry, history } = props;
+
+    const onSubmit = (entryObj: Entry): void => {
+        startEditEntry(entryObj.id, entryObj);
+        history.push('/');
     }
-    public removeEntry = (): void => {
-        this.props.startRemoveEntry({id: this.props.entryObj.id});
-        this.props.history.push('/');
+    const removeEntry = (): void => {
+        startRemoveEntry({id: entryObj.id});
+        history.push('/');
     }
-    public render(): JSX.Element {
         return (
             <div className="content-container">
                 <h1>Edit Journal Entry</h1>
                 <DateEntryForm 
-                    entryObj={this.props.entryObj}
-                    onSubmit={this.onSubmit}
+                    entry={entryObj}
+                    onSubmit={onSubmit}
                 />
-                <button className="button" onClick={this.removeEntry}>Remove Entry</button>
+                <button className="button" onClick={removeEntry}>Remove Entry</button>
             </div>
         )
-    }
 }
 
 // This finds the entryObj, who's ID matches the URL's ID, returning something like:

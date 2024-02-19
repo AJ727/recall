@@ -1,86 +1,69 @@
 import * as React from 'react';
+import { useState } from 'react';
 import * as moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import { Entry } from '../interfaces/Actions';
 
 export interface IDateEntryFormProps {
-    onSubmit({ entry: string, date: number }): void;
-    entryObj: Entry;
+    onSubmit(entryObj: Entry): void;
+    entry: Entry;
 }
 
-export interface IDateEntryFormState {
-    date: moment.Moment;
-    entry: string;
-    focused: boolean;
-    error: string;
-}
+export default (props: IDateEntryFormProps) => {
+    const { onSubmit: onSubmitHandler, entry: entryProp } = props;
+    const [date, setDate] = useState<moment.Moment>(entryProp ? moment(entryProp.date) : moment());
+    const [entry, setEntry] = useState<string>(entryProp ? entryProp.entry : '');
+    const [focused, setFocused] = useState<boolean>(false);
+    const [error, setError] = useState<string>('');
 
-export default class DateEntryForm extends React.Component<IDateEntryFormProps, IDateEntryFormState> {
-    constructor(props: IDateEntryFormProps) {
-        // We call the constructor and super, in order to pass props upstream
-        super(props);
-        this.state = {
-            // If there's an entryObj, set the date equal to the object's date (same for entry basically)
-            date: props.entryObj ? moment(props.entryObj.date) : moment(),
-            entry: props.entryObj ? props.entryObj.entry : '',
-            focused: false,
-            error: ''
-        }
-    }
-    // On date change, grab the new data and update the state
-    private onDateChange = (date: moment.Moment): void => {
-        this.setState({date})
-    }
     // Whenever the user types something, update the state
-    private onEntryChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
-        const entry = event.target.value;
-        this.setState(() => ({entry}))
+    const onEntryChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+        setEntry(event.target.value);
     }
     // On submit, pass in the event
-    private onSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
+    const onSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
         // Prevent the page from reloading
         event.preventDefault();
+
         // If nothing was typed into the textarea
-        if(!this.state.entry) {
-            this.setState(() => ({ error: 'Provide a valid journal entry!' }));
+        if (!entry) {
+            setError('Provide a valid journal entry!');
         }
         // Clear the error, and submit the new entry and date
         else {
-            this.setState(() => ({ error: '' }));
+            setError('');
             // This onSubmit function is passed in from AddEntryPage
-            this.props.onSubmit({
-                entry: this.state.entry,
-                date: this.state.date.valueOf()
+            onSubmitHandler({
+                entry: entry,
+                date: date.valueOf()
             });
         }
     };
 
-    public render(): JSX.Element {
-        return (
-            <form className="form" onSubmit={this.onSubmit}>
-            {this.state.error && <p className="form__error">{this.state.error}</p>}
-                <div>
-                    <SingleDatePicker 
-                        date={this.state.date}
-                        onDateChange={this.onDateChange}
-                        focused={this.state.focused}
-                        onFocusChange={({focused}) => this.setState({ focused })}
-                        numberOfMonths={1}
-                        isOutsideRange={() => false}
-                        id="FormDate"
-                    />  
-                </div>
-                <div>
-                    <textarea
-                        value={this.state.entry}
-                        onChange={this.onEntryChange}
-                        placeholder="Add today's journal entry!"
-                    />
-                </div>
-                <div>
-                    <button className="button">Save Journal Entry</button>
-                </div>
-            </form>
-        )
-    }
-};
+    return (
+        <form className="form" onSubmit={onSubmit}>
+        {error && <p className="form__error">{error}</p>}
+            <div>
+                <SingleDatePicker 
+                    date={date}
+                    onDateChange={(dateChange: moment.Moment) => setDate(dateChange)}
+                    focused={focused}
+                    onFocusChange={(focusChanged: { focused: boolean }) => setFocused(focusChanged.focused)}
+                    numberOfMonths={1}
+                    isOutsideRange={() => false}
+                    id="FormDate"
+                />  
+            </div>
+            <div>
+                <textarea
+                    value={entry}
+                    onChange={onEntryChange}
+                    placeholder="Add today's journal entry!"
+                />
+            </div>
+            <div>
+                <button className="button">Save Journal Entry</button>
+            </div>
+        </form>
+    )
+}

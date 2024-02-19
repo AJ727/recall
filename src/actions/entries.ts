@@ -15,7 +15,7 @@ export const addEntry = (entryObj: Entry): AddEntry => ({
     // }
 });
 
-export const startAddEntry = (entryData: any = {}) => {
+export const startAddEntry = (entryData: any = {}): any => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         const { date = '', entry = '' } = entryData;
