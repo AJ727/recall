@@ -9,6 +9,7 @@ import EditEntryPage from '../components/EditEntryPage';
 import ViewAllPage from '../components/ViewAllPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import { History } from 'history';
 
 // Stateless functional React Component
 // path = where we want to show something
@@ -17,7 +18,7 @@ import PublicRoute from './PublicRoute';
 // <Switch> --> traverses from top to bottom and stops when the correct path is found. If none is found it'll display
 // the last one which is the 404 page
 // :id dynamically matches whatever comes after /edit/ such as /edit/44
-export const history = createHistory();
+export const history: History<any> = createHistory();
 
 const AppRouter = () => (
     <Router history={history}>

@@ -5,13 +5,14 @@ import DateEntryForm from './DateEntryForm';
 import { startAddEntry } from '../actions/entries';
 import selectEntries from '../selectors/entries';
 import { Entry } from '../interfaces/Actions';
+import { History } from 'history';
 
 // This Component renders a form, and upon submission, calls dispatch(addEntry(entryObj))
 // which adds an instance of an entryObj into the entries array
 
 interface IProps {
     startAddEntry: (entryObj: Entry) => void;
-    history: any;
+    history: History<any>;
     entry: Entry;
 }
 
